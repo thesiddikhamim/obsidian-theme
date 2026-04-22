@@ -1,0 +1,486 @@
+/*
+ * ╔══════════════════════════════════════════════════════════════╗
+ * ║        OLED One Dark Pro — Obsidian Theme                  ║
+ * ║ Pure black background · One Dark Pro syntax highlighting   ║
+ * ╚══════════════════════════════════════════════════════════════╝
+ *
+ * INSTALL:
+ *  1. Copy this folder to: <vault>/.obsidian/themes/OLED-OneDarkPro/
+ *  2. Open Obsidian → Settings → Appearance → Themes → pick "OLED-OneDarkPro"
+ *  3. Make sure "Base color scheme" is set to Dark
+ */
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 1 — OLED BLACK BACKGROUNDS
+   Everything that was dark grey → pure #000000
+   ═══════════════════════════════════════════════════════════════ */
+
+.theme-dark {
+  /* Core backgrounds */
+  --background-primary:          #000000;   /* main editor area      */
+  --background-primary-alt:      #000000;   /* editor alt (headings) */
+  --background-secondary:        #000000;   /* left/right sidebars   */
+  --background-secondary-alt:    #0a0a0a;   /* sidebar headers       */
+
+  /* Modifiers — keep subtle contrast so UI chrome is usable */
+  --background-modifier-hover:        rgba(255,255,255,0.06);
+  --background-modifier-active-hover: rgba(255,255,255,0.09);
+  --background-modifier-border:       #1e1e1e;
+  --background-modifier-border-hover: #2a2a2a;
+  --background-modifier-border-focus: #3a3a3a;
+  --background-modifier-error:        rgba(200,50,50,0.15);
+  --background-modifier-error-hover:  rgba(200,50,50,0.25);
+  --background-modifier-success:      rgba(68,168,68,0.15);
+  --background-modifier-message:      #0d0d0d;
+
+  /* Inputs */
+  --background-input:            #0d0d0d;
+
+  /* Scrollbars */
+  --scrollbar-bg:                #000000;
+  --scrollbar-thumb-bg:          #2a2a2a;
+  --scrollbar-active-thumb-bg:   #3a3a3a;
+
+  /* Modal / popover overlay */
+  --modal-background:            #050505;
+  --prompt-background:           #080808;
+
+  /* Tab bar */
+  --tab-background-active:       #000000;
+  --tab-text-color-focused-active-current: var(--text-normal);
+
+  /* Title bar */
+  --titlebar-background:         #000000;
+  --titlebar-background-focused: #000000;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 2 — ONE DARK PRO COLOUR PALETTE (as CSS variables)
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* One Dark Pro exact colours */
+  --vsc-bg:           #0e0e0e;   /* code block background         */
+  --vsc-gutter:       #1e1e1e;   /* line-number gutter            */
+  --vsc-text:         #abb2bf;   /* default token / plain text    */
+  --vsc-comment:      #5c6370;   /* comments                      */
+  --vsc-keyword:      #c678dd;   /* keywords (if, for, return…)   */
+  --vsc-keyword-ctrl: #c678dd;   /* control flow (import/export)  */
+  --vsc-type:         #e5c07b;   /* types / classes               */
+  --vsc-function:     #61afef;   /* function names                */
+  --vsc-variable:     #e06c75;   /* variables / parameters        */
+  --vsc-constant:     #d19a66;   /* constants                     */
+  --vsc-string:       #98c379;   /* strings                       */
+  --vsc-number:       #d19a66;   /* numeric literals              */
+  --vsc-operator:     #808080;   /* operators + punctuation       */
+  --vsc-property:     #e06c75;   /* object properties             */
+  --vsc-tag:          #e06c75;   /* HTML/XML tags                 */
+  --vsc-attr:         #d19a66;   /* HTML attributes               */
+  --vsc-regex:        #56b6c2;   /* regular expressions           */
+  --vsc-decorator:    #61afef;   /* decorators / annotations      */
+  --vsc-invalid:      #e06c75;   /* errors / invalid              */
+  --vsc-selection:    #264f78;   /* editor selection highlight    */
+  --vsc-line-hl:      #ffffff0f; /* active line highlight         */
+  --vsc-cursor:       #aeafad;   /* cursor / caret colour         */
+  --vsc-line-num:     #858585;   /* line numbers                  */
+  --vsc-font:         'Consolas', 'Cascadia Code', 'Fira Code',
+                      'JetBrains Mono', 'SF Mono', monospace;
+  --vsc-font-size:    13.5px;
+  --vsc-line-height:  1.6;
+  --vsc-border-radius: 6px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 3 — CODE BLOCKS (Reading View  — rendered markdown)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Fenced code block container */
+.markdown-rendered pre,
+.markdown-preview-view pre {
+  background-color: var(--vsc-bg) !important;
+  border: 1px solid #2d2d2d;
+  border-radius: var(--vsc-border-radius);
+  padding: 16px 20px;
+  margin: 12px 0;
+  overflow-x: auto;
+  position: relative;
+}
+
+.markdown-rendered pre code,
+.markdown-preview-view pre code {
+  background: transparent !important;
+  color: var(--vsc-text);
+  font-family: var(--vsc-font) !important;
+  font-size: var(--vsc-font-size) !important;
+  line-height: var(--vsc-line-height);
+  tab-size: 4;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Inline code */
+.markdown-rendered code,
+.markdown-preview-view code,
+.cm-inline-code .cm-hmd-codeblock {
+  background-color: #2d2d2d !important;
+  color: #98c379 !important;
+  font-family: var(--vsc-font) !important;
+  font-size: 0.9em;
+  border-radius: 3px;
+  padding: 1px 5px;
+  border: 1px solid #3c3c3c;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 4 — LIVE PREVIEW / SOURCE MODE (CodeMirror 6)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Code block background in Live Preview */
+.cm-s-obsidian .HyperMD-codeblock,
+.cm-line.HyperMD-codeblock,
+.cm-s-obsidian .cm-hmd-codeblock {
+  background-color: var(--vsc-bg) !important;
+  font-family: var(--vsc-font) !important;
+  font-size: var(--vsc-font-size) !important;
+  line-height: var(--vsc-line-height) !important;
+  color: var(--vsc-text) !important;
+}
+
+/* Code fence delimiter lines */
+.cm-s-obsidian .HyperMD-codeblock-begin,
+.cm-s-obsidian .HyperMD-codeblock-end,
+.cm-line.HyperMD-codeblock-begin,
+.cm-line.HyperMD-codeblock-end {
+  background-color: #0e0e0e !important;
+  color: #555 !important;
+  font-family: var(--vsc-font) !important;
+  font-size: var(--vsc-font-size) !important;
+}
+
+/* Inline code in Live Preview */
+.cm-s-obsidian .cm-inline-code {
+  background-color: #2d2d2d !important;
+  color: #98c379 !important;
+  font-family: var(--vsc-font) !important;
+  border-radius: 3px;
+  padding: 1px 4px;
+}
+
+/* Active line highlight inside code blocks */
+.cm-s-obsidian .cm-activeLine.HyperMD-codeblock {
+  background-color: var(--vsc-line-hl) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 5 — SYNTAX HIGHLIGHTING TOKENS (CodeMirror)
+   Mapped to One Dark Pro colours
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Comments */
+.cm-comment,
+.cm-s-obsidian .cm-comment {
+  color: var(--vsc-comment) !important;
+  font-style: italic;
+}
+
+/* Keywords — if, else, while, return, function, class, etc. */
+.cm-keyword,
+.cm-s-obsidian .cm-keyword {
+  color: var(--vsc-keyword) !important;
+}
+
+/* Control-flow keywords — import, export, from */
+.cm-s-obsidian span[class*="cm-keyword"]:is(.cm-import, .cm-export) {
+  color: var(--vsc-keyword-ctrl) !important;
+}
+
+/* Strings */
+.cm-string,
+.cm-s-obsidian .cm-string,
+.cm-s-obsidian .cm-string-2 {
+  color: var(--vsc-string) !important;
+}
+
+/* Numbers */
+.cm-number,
+.cm-s-obsidian .cm-number {
+  color: var(--vsc-number) !important;
+}
+
+/* Variable names */
+.cm-variable,
+.cm-s-obsidian .cm-variable {
+  color: var(--vsc-variable) !important;
+}
+.cm-variable-2,
+.cm-s-obsidian .cm-variable-2 {
+  color: var(--vsc-variable) !important;
+}
+.cm-variable-3,
+.cm-s-obsidian .cm-variable-3 {
+  color: var(--vsc-type) !important;
+}
+
+/* Function / method names */
+.cm-s-obsidian .cm-def,
+.cm-def,
+.cm-s-obsidian .cm-callee {
+  color: var(--vsc-function) !important;
+}
+
+/* Type names / class names */
+.cm-type,
+.cm-s-obsidian .cm-type {
+  color: var(--vsc-type) !important;
+}
+
+/* Built-in identifiers */
+.cm-builtin,
+.cm-s-obsidian .cm-builtin {
+  color: var(--vsc-type) !important;
+}
+
+/* Attributes / decorators */
+.cm-attribute,
+.cm-s-obsidian .cm-attribute {
+  color: var(--vsc-attr) !important;
+}
+
+/* HTML/XML tags */
+.cm-tag,
+.cm-s-obsidian .cm-tag {
+  color: var(--vsc-tag) !important;
+}
+
+/* Properties */
+.cm-property,
+.cm-s-obsidian .cm-property {
+  color: var(--vsc-property) !important;
+}
+
+/* Operators  ( + - * / = < > ) */
+.cm-operator,
+.cm-s-obsidian .cm-operator {
+  color: var(--vsc-operator) !important;
+}
+
+/* Punctuation */
+.cm-punctuation,
+.cm-s-obsidian .cm-punctuation,
+.cm-s-obsidian .cm-bracket {
+  color: var(--vsc-operator) !important;
+}
+
+/* Regular expressions */
+.cm-string.cm-special,
+.cm-s-obsidian .cm-string.cm-special {
+  color: var(--vsc-regex) !important;
+}
+
+/* Constants (true, false, null, undefined) */
+.cm-atom,
+.cm-s-obsidian .cm-atom {
+  color: var(--vsc-constant) !important;
+}
+
+/* Meta / preprocessor */
+.cm-meta,
+.cm-s-obsidian .cm-meta {
+  color: var(--vsc-keyword-ctrl) !important;
+}
+
+/* Invalid / error tokens */
+.cm-error,
+.cm-s-obsidian .cm-error,
+.cm-invalidchar {
+  color: var(--vsc-invalid) !important;
+}
+
+/* Selection highlight */
+.cm-s-obsidian .cm-selectionBackground,
+.cm-selectionBackground {
+  background-color: var(--vsc-selection) !important;
+}
+
+/* Cursor */
+.cm-s-obsidian .cm-cursor,
+.cm-cursor {
+  border-left-color: var(--vsc-cursor) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 6 — SYNTAX HIGHLIGHTING TOKENS (Reading View / Prism)
+   For Obsidian's rendered HTML code blocks
+   ═══════════════════════════════════════════════════════════════ */
+
+.markdown-rendered .token.comment,
+.markdown-rendered .token.prolog,
+.markdown-rendered .token.doctype,
+.markdown-rendered .token.cdata {
+  color: var(--vsc-comment);
+  font-style: italic;
+}
+
+.markdown-rendered .token.keyword,
+.markdown-rendered .token.rule,
+.markdown-rendered .token.important {
+  color: var(--vsc-keyword);
+}
+
+.markdown-rendered .token.atrule,
+.markdown-rendered .token.attr-value,
+.markdown-rendered .token.function {
+  color: var(--vsc-function);
+}
+
+.markdown-rendered .token.class-name,
+.markdown-rendered .token.builtin {
+  color: var(--vsc-type);
+}
+
+.markdown-rendered .token.string,
+.markdown-rendered .token.char {
+  color: var(--vsc-string);
+}
+
+.markdown-rendered .token.number,
+.markdown-rendered .token.boolean {
+  color: var(--vsc-number);
+}
+
+.markdown-rendered .token.constant,
+.markdown-rendered .token.symbol {
+  color: var(--vsc-constant);
+}
+
+.markdown-rendered .token.variable,
+.markdown-rendered .token.parameter {
+  color: var(--vsc-variable);
+}
+
+.markdown-rendered .token.property,
+.markdown-rendered .token.attr-name {
+  color: var(--vsc-property);
+}
+
+.markdown-rendered .token.tag {
+  color: var(--vsc-tag);
+}
+
+.markdown-rendered .token.selector {
+  color: var(--vsc-keyword);
+}
+
+.markdown-rendered .token.operator,
+.markdown-rendered .token.punctuation {
+  color: var(--vsc-operator);
+}
+
+.markdown-rendered .token.regex,
+.markdown-rendered .token.url {
+  color: var(--vsc-regex);
+}
+
+.markdown-rendered .token.inserted {
+  color: #98c379;
+}
+
+.markdown-rendered .token.deleted {
+  color: var(--vsc-invalid);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 7 — CODE BLOCK LANGUAGE LABEL (optional style touch)
+   Shows the language name (e.g. "python") in top-right of block
+   ═══════════════════════════════════════════════════════════════ */
+
+.markdown-rendered pre[class*="language-"]::before,
+.markdown-preview-view pre[class*="language-"]::before {
+  content: attr(class);
+  position: absolute;
+  top: 6px;
+  right: 12px;
+  font-family: var(--vsc-font);
+  font-size: 10px;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 8 — SCROLLBAR STYLING (thin, VS Code style)
+   ═══════════════════════════════════════════════════════════════ */
+
+pre::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background-color: #424242;
+  border-radius: 3px;
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+  background-color: #5a5a5a;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 9 — MISC DARK CHROME FIXES FOR OLED
+   Ensure no stray grey backgrounds slip through
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Left ribbon */
+.workspace-ribbon {
+  background-color: #000000 !important;
+}
+
+/* Status bar */
+.status-bar {
+  background-color: #000000 !important;
+  border-top: 1px solid #1e1e1e;
+}
+
+/* Tab container */
+.workspace-tab-header-container {
+  background-color: #000000 !important;
+}
+
+/* Inactive tabs */
+.workspace-tab-header {
+  background-color: #0a0a0a !important;
+}
+
+/* Active tab */
+.workspace-tab-header.is-active {
+  background-color: #000000 !important;
+}
+
+/* File explorer / sidebar */
+.nav-files-container {
+  background-color: #000000 !important;
+}
+
+/* Settings modal */
+.modal-container .modal {
+  background-color: #0d0d0d !important;
+}
+
+/* Search / quick switcher prompt */
+.prompt {
+  background-color: #0d0d0d !important;
+}
+
+/* Suggestions dropdown */
+.suggestion-container {
+  background-color: #0d0d0d !important;
+  border: 1px solid #2a2a2a;
+}
+
+.suggestion-item.is-selected {
+  background-color: #1a1a1a !important;
+}
