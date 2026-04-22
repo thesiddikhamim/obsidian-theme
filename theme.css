@@ -72,7 +72,7 @@
   --vsc-constant:     #4fc1ff;   /* constants                     */
   --vsc-string:       #ce9178;   /* strings                       */
   --vsc-number:       #b5cea8;   /* numeric literals              */
-  --vsc-operator:     #d4d4d4;   /* operators + punctuation       */
+  --vsc-operator:     #808080;   /* operators + punctuation       */
   --vsc-property:     #9cdcfe;   /* object properties             */
   --vsc-tag:          #569cd6;   /* HTML/XML tags                 */
   --vsc-attr:         #9cdcfe;   /* HTML attributes               */
