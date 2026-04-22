@@ -60,7 +60,7 @@
 
 :root {
   /* VS Code Dark+ exact colours */
-  --vsc-bg:           #1e1e1e;   /* code block background         */
+  --vsc-bg:           #0e0e0e;   /* code block background         */
   --vsc-gutter:       #1e1e1e;   /* line-number gutter            */
   --vsc-text:         #d4d4d4;   /* default token / plain text    */
   --vsc-comment:      #6a9955;   /* comments                      */
@@ -150,7 +150,7 @@
 .cm-s-obsidian .HyperMD-codeblock-end,
 .cm-line.HyperMD-codeblock-begin,
 .cm-line.HyperMD-codeblock-end {
-  background-color: #161616 !important;
+  background-color: #0e0e0e !important;
   color: #555 !important;
   font-family: var(--vsc-font) !important;
   font-size: var(--vsc-font-size) !important;
