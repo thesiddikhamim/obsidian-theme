@@ -83,8 +83,8 @@
   --vsc-line-hl:      #ffffff0f; /* active line highlight         */
   --vsc-cursor:       #aeafad;   /* cursor / caret colour         */
   --vsc-line-num:     #858585;   /* line numbers                  */
-  --vsc-font:         'Consolas', 'Cascadia Code', 'Fira Code',
-                      'JetBrains Mono', 'SF Mono', monospace;
+  --vsc-font:         'JetBrains Mono', 'Consolas', 'Cascadia Code', 
+                      'Fira Code', 'SF Mono', monospace;
   --vsc-font-size:    13.5px;
   --vsc-line-height:  1.6;
   --vsc-border-radius: 6px;
