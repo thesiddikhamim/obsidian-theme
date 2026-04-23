@@ -53,9 +53,8 @@
   --titlebar-background:         #000000;
   --titlebar-background-focused: #000000;
 
-  /* VS Code Dark+ specific colours */
+  /* VS Code Dark+ exact colours */
   --vsc-bg:           #0e0e0e;   /* code block background         */
-  --vsc-border:       #2d2d2d;   /* code block border             */
   --vsc-gutter:       #1e1e1e;   /* line-number gutter            */
   --vsc-text:         #d4d4d4;   /* default token / plain text    */
   --vsc-comment:      #6a9955;   /* comments                      */
@@ -78,37 +77,18 @@
   --vsc-line-hl:      #ffffff0f; /* active line highlight         */
   --vsc-cursor:       #aeafad;   /* cursor / caret colour         */
   --vsc-line-num:     #858585;   /* line numbers                  */
-  --vsc-inline-bg:    #2d2d2d;   /* inline code background        */
-  --vsc-inline-text:  #ce9178;   /* inline code text              */
-  --vsc-inline-border:#3c3c3c;   /* inline code border            */
-  --vsc-scroll-thumb: #424242;   /* scrollbar thumb               */
-  --vsc-scroll-thumb-hover: #5a5a5a;
 
-  /* Left ribbon */
-  --ribbon-background:           #000000;
-  --ribbon-background-collapsed: #000000;
-  
-  /* Status bar */
-  --status-bar-background:       #000000;
-  --status-bar-border-color:     #1e1e1e;
-
-  /* Tab bar */
-  --tab-container-background:    #000000;
-  --tab-background-active:       #000000;
-  --tab-background-inactive:     #0a0a0a;
-
-  /* File explorer / sidebar */
-  --nav-item-background-hover:   rgba(255,255,255,0.05);
-  --nav-item-background-active:  rgba(255,255,255,0.1);
+  /* Inline and code block extras */
+  --vsc-inline-bg:    #2d2d2d;
+  --vsc-inline-color: #ce9178;
+  --vsc-code-border:  #2d2d2d;
 }
 
-
 .theme-light {
-  /* VS Code Light specific colours */
-  --vsc-bg:           #f3f3f3;   /* code block background         */
-  --vsc-border:       #f3f3f3;   /* code block border             */
-  --vsc-gutter:       #f3f3f3;   /* line-number gutter            */
-  --vsc-text:         #333333;   /* default token / plain text    */
+  /* VS Code Light+ exact colours */
+  --vsc-bg:           #ffffff;   /* code block background         */
+  --vsc-gutter:       #ffffff;   /* line-number gutter            */
+  --vsc-text:         #000000;   /* default token / plain text    */
   --vsc-comment:      #008000;   /* comments                      */
   --vsc-keyword:      #0000ff;   /* keywords (if, for, return…)   */
   --vsc-keyword-ctrl: #af00db;   /* control flow (import/export)  */
@@ -118,7 +98,7 @@
   --vsc-constant:     #0000ff;   /* constants                     */
   --vsc-string:       #a31515;   /* strings                       */
   --vsc-number:       #098658;   /* numeric literals              */
-  --vsc-operator:     #3b3b3b;   /* operators + punctuation       */
+  --vsc-operator:     #000000;   /* operators + punctuation       */
   --vsc-property:     #001080;   /* object properties             */
   --vsc-tag:          #800000;   /* HTML/XML tags                 */
   --vsc-attr:         #ff0000;   /* HTML attributes               */
@@ -126,36 +106,27 @@
   --vsc-decorator:    #795e26;   /* decorators / annotations      */
   --vsc-invalid:      #f44747;   /* errors / invalid              */
   --vsc-selection:    #add6ff;   /* editor selection highlight    */
-  --vsc-line-hl:      #0000000a; /* active line highlight         */
+  --vsc-line-hl:      #f3f3f3;   /* active line highlight         */
   --vsc-cursor:       #000000;   /* cursor / caret colour         */
   --vsc-line-num:     #237893;   /* line numbers                  */
-  --vsc-inline-bg:    #f0f0f0;   /* inline code background        */
-  --vsc-inline-text:  #a31515;   /* inline code text              */
-  --vsc-inline-border:#d0d0d0;   /* inline code border            */
-  --vsc-scroll-thumb: #c1c1c1;   /* scrollbar thumb               */
-  --vsc-scroll-thumb-hover: #a6a6a6;
 
-  /* Light mode font contrast improvements */
-  --text-normal:      #1a1a1a;
-  --text-muted:       #555555;
-  --text-faint:       #888888;
+  /* Inline and code block extras */
+  --vsc-inline-bg:    #f3f3f3;
+  --vsc-inline-color: #a31515;
+  --vsc-code-border:  #eeeeee;
 }
 
-
-
 /* ═══════════════════════════════════════════════════════════════
-   SECTION 2 — VS CODE DARK+ COLOUR PALETTE (as CSS variables)
+   SECTION 2 — GLOBAL SETTINGS
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
-  /* Shared settings */
   --vsc-font:         'JetBrains Mono', 'Consolas', 'Cascadia Code', 
                       'Fira Code', 'SF Mono', monospace;
-  --vsc-font-size:    13px;
+  --vsc-font-size:    13.5px;
   --vsc-line-height:  1.6;
   --vsc-border-radius: 6px;
 }
-
 
 /* ═══════════════════════════════════════════════════════════════
    SECTION 3 — CODE BLOCKS (Reading View  — rendered markdown)
@@ -163,44 +134,39 @@
 
 /* Fenced code block container */
 .markdown-rendered pre,
-.markdown-rendered pre[class*="language-"],
 .markdown-preview-view pre {
   background-color: var(--vsc-bg) !important;
-  border: 1px solid var(--vsc-border) !important;
-  border-radius: var(--vsc-border-radius) !important;
-  padding: 16px 20px !important;
-  margin: 12px 0 !important;
-  overflow-x: auto !important;
-  position: relative !important;
-  font-family: var(--vsc-font) !important;
+  border: 1px solid var(--vsc-code-border);
+  border-radius: var(--vsc-border-radius);
+  padding: 16px 20px;
+  margin: 12px 0;
+  overflow-x: auto;
+  position: relative;
 }
 
 .markdown-rendered pre code,
-.markdown-rendered pre[class*="language-"] code,
 .markdown-preview-view pre code {
   background: transparent !important;
-  color: var(--vsc-text) !important;
+  color: var(--vsc-text);
   font-family: var(--vsc-font) !important;
   font-size: var(--vsc-font-size) !important;
-  line-height: var(--vsc-line-height) !important;
-  tab-size: 4 !important;
-  -webkit-font-smoothing: antialiased !important;
+  line-height: var(--vsc-line-height);
+  tab-size: 4;
+  -webkit-font-smoothing: antialiased;
 }
-
 
 /* Inline code */
-.markdown-rendered :not(pre) > code,
-.markdown-preview-view :not(pre) > code,
-.cm-inline-code {
+.markdown-rendered code,
+.markdown-preview-view code,
+.cm-inline-code .cm-hmd-codeblock {
   background-color: var(--vsc-inline-bg) !important;
-  color: var(--vsc-inline-text) !important;
+  color: var(--vsc-inline-color) !important;
   font-family: var(--vsc-font) !important;
-  font-size: 0.9em !important;
-  border-radius: 3px !important;
-  padding: 1px 5px !important;
-  border: 1px solid var(--vsc-inline-border) !important;
+  font-size: 0.9em;
+  border-radius: 3px;
+  padding: 1px 5px;
+  border: 1px solid var(--vsc-code-border);
 }
-
 
 /* ═══════════════════════════════════════════════════════════════
    SECTION 4 — LIVE PREVIEW / SOURCE MODE (CodeMirror 6)
@@ -223,21 +189,19 @@
 .cm-line.HyperMD-codeblock-begin,
 .cm-line.HyperMD-codeblock-end {
   background-color: var(--vsc-bg) !important;
-  color: var(--vsc-line-num) !important;
+  color: #555 !important;
   font-family: var(--vsc-font) !important;
   font-size: var(--vsc-font-size) !important;
-  opacity: 0.5;
 }
 
 /* Inline code in Live Preview */
 .cm-s-obsidian .cm-inline-code {
   background-color: var(--vsc-inline-bg) !important;
-  color: var(--vsc-inline-text) !important;
+  color: var(--vsc-inline-color) !important;
   font-family: var(--vsc-font) !important;
   border-radius: 3px;
   padding: 1px 4px;
 }
-
 
 /* Active line highlight inside code blocks */
 .cm-s-obsidian .cm-activeLine.HyperMD-codeblock {
@@ -390,80 +354,81 @@
 .markdown-rendered .token.prolog,
 .markdown-rendered .token.doctype,
 .markdown-rendered .token.cdata {
-  color: var(--vsc-comment) !important;
-  font-style: italic !important;
+  color: var(--vsc-comment);
+  font-style: italic;
 }
 
 .markdown-rendered .token.keyword,
 .markdown-rendered .token.rule,
 .markdown-rendered .token.important {
-  color: var(--vsc-keyword) !important;
+  color: var(--vsc-keyword);
 }
 
 .markdown-rendered .token.atrule,
 .markdown-rendered .token.attr-value,
 .markdown-rendered .token.function {
-  color: var(--vsc-function) !important;
+  color: var(--vsc-function);
 }
 
 .markdown-rendered .token.class-name,
 .markdown-rendered .token.builtin {
-  color: var(--vsc-type) !important;
+  color: var(--vsc-type);
 }
 
 .markdown-rendered .token.string,
 .markdown-rendered .token.char {
-  color: var(--vsc-string) !important;
+  color: var(--vsc-string);
 }
 
 .markdown-rendered .token.number,
 .markdown-rendered .token.boolean {
-  color: var(--vsc-number) !important;
+  color: var(--vsc-number);
 }
 
 .markdown-rendered .token.constant,
 .markdown-rendered .token.symbol {
-  color: var(--vsc-constant) !important;
+  color: var(--vsc-constant);
 }
 
 .markdown-rendered .token.variable,
 .markdown-rendered .token.parameter {
-  color: var(--vsc-variable) !important;
+  color: var(--vsc-variable);
 }
 
 .markdown-rendered .token.property,
 .markdown-rendered .token.attr-name {
-  color: var(--vsc-property) !important;
+  color: var(--vsc-property);
 }
 
 .markdown-rendered .token.tag {
-  color: var(--vsc-tag) !important;
+  color: var(--vsc-tag);
 }
 
 .markdown-rendered .token.selector {
-  color: var(--vsc-keyword) !important;
+  color: var(--vsc-keyword);
 }
 
 .markdown-rendered .token.operator,
 .markdown-rendered .token.punctuation {
-  color: var(--vsc-operator) !important;
+  color: var(--vsc-operator);
 }
 
 .markdown-rendered .token.regex,
 .markdown-rendered .token.url {
-  color: var(--vsc-regex) !important;
+  color: var(--vsc-regex);
 }
 
 .markdown-rendered .token.inserted {
-  color: #6a9955 !important;
+  color: #6a9955;
 }
 
 .markdown-rendered .token.deleted {
-  color: var(--vsc-invalid) !important;
+  color: var(--vsc-invalid);
 }
 
 /* ═══════════════════════════════════════════════════════════════
    SECTION 7 — CODE BLOCK LANGUAGE LABEL (optional style touch)
+   Shows the language name (e.g. "python") in top-right of block
    ═══════════════════════════════════════════════════════════════ */
 
 .markdown-rendered pre[class*="language-"]::before,
@@ -472,15 +437,13 @@
   position: absolute;
   top: 6px;
   right: 12px;
-  font-family: var(--vsc-font) !important;
+  font-family: var(--vsc-font);
   font-size: 10px;
-  color: var(--vsc-line-num) !important;
+  color: #555;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  opacity: 0.6;
   pointer-events: none;
 }
-
 
 /* ═══════════════════════════════════════════════════════════════
    SECTION 8 — SCROLLBAR STYLING (thin, VS Code style)
@@ -496,47 +459,52 @@ pre::-webkit-scrollbar-track {
 }
 
 pre::-webkit-scrollbar-thumb {
-  background-color: var(--vsc-scroll-thumb) !important;
+  background-color: #424242;
   border-radius: 3px;
 }
 
 pre::-webkit-scrollbar-thumb:hover {
-  background-color: var(--vsc-scroll-thumb-hover) !important;
+  background-color: #5a5a5a;
 }
-
 
 /* ═══════════════════════════════════════════════════════════════
    SECTION 9 — MISC DARK CHROME FIXES FOR OLED
+   Ensure no stray grey backgrounds slip through
    ═══════════════════════════════════════════════════════════════ */
 
 .theme-dark .workspace-ribbon {
-  background-color: var(--ribbon-background) !important;
+  background-color: #000000 !important;
 }
 
 .theme-dark .status-bar {
-  background-color: var(--status-bar-background) !important;
-  border-top: 1px solid var(--status-bar-border-color);
+  background-color: #000000 !important;
+  border-top: 1px solid #1e1e1e;
 }
 
 .theme-dark .workspace-tab-header-container {
-  background-color: var(--tab-container-background) !important;
+  background-color: #000000 !important;
 }
 
 .theme-dark .workspace-tab-header {
-  background-color: var(--tab-background-inactive) !important;
+  background-color: #0a0a0a !important;
 }
 
 .theme-dark .workspace-tab-header.is-active {
-  background-color: var(--tab-background-active) !important;
+  background-color: #000000 !important;
 }
 
 .theme-dark .nav-files-container {
-  background-color: var(--background-secondary) !important;
+  background-color: #000000 !important;
 }
 
-/* Modal and popover overrides for OLED */
-.theme-dark .modal-container .modal,
-.theme-dark .prompt,
+.theme-dark .modal-container .modal {
+  background-color: #0d0d0d !important;
+}
+
+.theme-dark .prompt {
+  background-color: #0d0d0d !important;
+}
+
 .theme-dark .suggestion-container {
   background-color: #0d0d0d !important;
   border: 1px solid #2a2a2a;
